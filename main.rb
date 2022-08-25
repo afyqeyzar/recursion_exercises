@@ -63,16 +63,16 @@ def merge_sort(arr)
     end
   end
 
-  left = merge_sort(left)
-  right = merge_sort(right)
+  left_arr = merge_sort(left)
+  right_arr = merge_sort(right)
 
-  p merge(left, right)
+  return merge(left_arr, right_arr)
 end
 
 def merge(left, right)
   result = []
 
-  while !left.empty? && !right.empty?
+  while left.any? && right.any?
     if left[0] < right[0]
       result << left[0]
       left.delete(left[0])
@@ -82,16 +82,17 @@ def merge(left, right)
     end
   end
 
-  while !left.empty?
+  while left.any?
     result << left[0]
     left.delete(left[0])
   end
-  while !right.empty?
+  while right.any?
     result << right[0]
     right.delete(right[0])
   end
+  return result
 end
 
-numbers = [2, 1]
+numbers = [14, 135, 78, 97, 83, 175, 67, 2, 15, 32, 131, 64, 22, 178, 149, 108, 195, 189, 54, 28, 116, 40, 181, 42, 88, 158, 105, 118, 60, 164, 152, 43, 169, 37, 103, 70, 177, 75, 154, 187, 21, 19, 191, 160, 17, 161, 190, 168, 163, 50]
 
-merge_sort(numbers)
+p merge_sort(numbers)
