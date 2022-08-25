@@ -53,6 +53,45 @@ def merge_sort(arr)
   if arr.length <= 1
     return arr
   end
+  left = []
+  right = []
+  arr.each_with_index do |element, index|
+    if index < (arr.length) / 2
+      left << element
+    else
+      right << element
+    end
+  end
+
+  left = merge_sort(left)
+  right = merge_sort(right)
+
+  p merge(left, right)
+end
+
+def merge(left, right)
+  result = []
+
+  while !left.empty? && !right.empty?
+    if left[0] < right[0]
+      result << left[0]
+      left.delete(left[0])
+    else
+      result << right[0]
+      right.delete(right[0])
+    end
+  end
+
+  while !left.empty?
+    result << left[0]
+    left.delete(left[0])
+  end
+  while !right.empty?
+    result << right[0]
+    right.delete(right[0])
+  end
 end
 
 numbers = [2, 1]
+
+merge_sort(numbers)
