@@ -47,4 +47,12 @@ def fibs_rec(n)
   array << array[-2] + array[-1]
 end
 
-p fibs_rec(8)
+#p fibs_rec(8)
+
+def merge_sort(arr)
+  if arr.length <= 1
+    return arr
+  end
+end
+
+numbers = [2, 1]
